@@ -449,6 +449,31 @@
             transition: color 0.3s;
         }
 
+        /* Visitor Counter - Bottom of content */
+        .visitor-counter {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: border-color 0.3s, color 0.3s;
+        }
+
+        .visitor-counter img {
+            height: 22px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .visitor-counter:hover img {
+            opacity: 1;
+        }
+
         /* Responsive - Tablet */
         @media (max-width: 1200px) {
             .sidebar {
@@ -596,6 +621,11 @@
                 font-size: 0.75rem;
                 letter-spacing: 0.5px;
             }
+
+            .visitor-counter {
+                margin-top: 2rem;
+                padding-top: 1.5rem;
+            }
         }
 
         /* Small Mobile */
@@ -734,12 +764,8 @@
 
                 <div class="card">
                     <div class="card-title">Early-Stage Diabetes Prediction using Stacked Learning</div>
-                    <div class="card-meta">Research Intern • Jan 2025 - Jun 2025 • Published in COMPUTINGCON 2025</div>
+                    <div class="card-meta">September 2025 • Published in COMPUTINGCON 2025</div>
                     <div class="card-description">
-                        Investigated early-stage diabetes prediction using structured health records and patient parameters. 
-                        Designed and evaluated a stacked learning model that achieved over 94% accuracy on institutional 
-                        health datasets. Authored and structured the research paper, successfully publishing as primary 
-                        author in COMPUTINGCON 2025.<br><br>
                         <strong>Mentor:</strong> Prof. Rinkle Rani, Department of Computer Science & Engineering, TIET
                     </div>
                     <div class="tags">
@@ -750,7 +776,7 @@
                     </div>
                     <p style="margin-top: 1rem;">
                         <a href="#" class="link">[paper]</a>
-                        <a href="#" class="link">[code]</a>
+                        <a href="https://github.com/idklol22/Enhanced-Diabetes-Prediction-using-Ensemble-Learning-and-SparsePCA-based-Feature-Reduction-" class="link" target="_blank">[code]</a>
                     </p>
                 </div>
             </section>
@@ -797,7 +823,7 @@
                         <span class="tag">Software Engineering</span>
                     </div>
                     <p style="margin-top: 1rem;">
-                        <a href="#" class="link">[github]</a>
+                        <a href="https://github.com/idklol22/Library_Management_System" class="link" target="_blank">[github]</a>
                     </p>
                 </div>
             </section>
@@ -884,6 +910,12 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Visitor Counter at bottom of content -->
+            <div class="visitor-counter">
+                <span>visitors:</span>
+                <img src="https://visitor-badge.laobi.icu/badge?page_id=idklol22.idklol22.github.io" alt="visitor count"/>
+            </div>
         </main>
     </div>
 
