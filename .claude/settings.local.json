@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:p5aholic.me)",
+      "WebFetch(domain:idklol22.github.io)",
+      "Bash(dir:*)"
+    ]
+  }
+}
