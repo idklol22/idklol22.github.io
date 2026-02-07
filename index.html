@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Sanjam Wadhwa - Undergraduate ML Researcher at Thapar Institute. Focused on Machine Learning, Reinforcement Learning, and building interpretable AI systems.">
+    <meta name="keywords" content="Machine Learning, AI, Researcher, Thapar, ML Engineer, Deep Learning">
+    <meta name="author" content="Sanjam Wadhwa">
+    <meta name="theme-color" content="#000000">
+
+    <title>SANJAM WADHWA — ML RESEARCHER</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- WebGL Canvas for Shader Background -->
+    <canvas id="shader-bg"></canvas>
+
+    <!-- Scan Lines Overlay -->
+    <div class="scanlines"></div>
+
+    <!-- Main Container -->
+    <div class="brutalist-container">
+
+        <!-- Left Panel - Fixed -->
+        <aside class="left-panel" id="left-panel">
+            <header class="brand">
+                <div class="brand-name">
+                    <span class="name-line glitch" data-text="SANJAM WADHWA">SANJAM WADHWA</span>
+                </div>
+                <div class="brand-tagline">
+                    <span class="tagline-text" id="tagline">BUILDING INTELLIGENT SYSTEMS</span>
+                </div>
+            </header>
+
+            <div class="nav-section">
+                <div class="nav-header">
+                    <span class="nav-title">//Index</span>
+                </div>
+                <nav class="nav-links">
+                    <a href="#about" class="nav-item">
+                        <span class="nav-index">00</span>
+                        <span class="nav-text">About</span>
+                    </a>
+                    <a href="#news" class="nav-item">
+                        <span class="nav-index">01</span>
+                        <span class="nav-text">News</span>
+                    </a>
+                    <a href="#research" class="nav-item">
+                        <span class="nav-index">02</span>
+                        <span class="nav-text">Research</span>
+                    </a>
+                    <a href="#projects" class="nav-item">
+                        <span class="nav-index">03</span>
+                        <span class="nav-text">Projects</span>
+                    </a>
+                    <a href="#skills" class="nav-item">
+                        <span class="nav-index">04</span>
+                        <span class="nav-text">Stack</span>
+                    </a>
+                    <a href="#notes" class="nav-item">
+                        <span class="nav-index">05</span>
+                        <span class="nav-text">Notes</span>
+                    </a>
+                    <a href="#experience" class="nav-item">
+                        <span class="nav-index">06</span>
+                        <span class="nav-text">Involvement</span>
+                    </a>
+                    <a href="#contact" class="nav-item">
+                        <span class="nav-index">07</span>
+                        <span class="nav-text">Contact</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="socials">
+                <div class="socials-label">//CONNECT</div>
+                <div class="social-row">
+                    <a href="https://github.com/idklol22" target="_blank" rel="noopener" class="social-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/sanjam-wadhwa-853985334/" target="_blank" rel="noopener" class="social-link" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.kaggle.com/sanjamw" target="_blank" rel="noopener" class="social-link" title="Kaggle">
+                        <i class="fab fa-kaggle"></i>
+                    </a>
+                    <a href="mailto:swadhwa.be24@thapar.edu" class="social-link" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="left-footer"></div>
+        </aside>
+
+        <!-- Right Panel - Scrollable -->
+        <main class="right-panel" id="right-panel">
+
+            <!-- About Section -->
+            <section class="section" id="about">
+                <div class="section-header">
+                    <span class="section-index">[00]</span>
+                    <span class="section-title">>WHOAMI_</span>
+                    <div class="section-line"></div>
+                </div>
+                <div class="section-content">
+                    <div class="text-block">
+                        <p>
+                            I'm Sanjam Wadhwa, an undergraduate student studying Computer Science at Thapar Institute of Engineering & Technology. I'm curious about how complex systems work and enjoy learning by exploring challenging ideas and problems. As a student, I value asking good questions, building strong fundamentals, and gradually developing a deeper understanding through coursework, reading, and projects.
+                        </p>
+                    </div>
+                    <div class="text-block">
+                        <p>
+                            I'm interested in growing as a researcher and learner, and I'm motivated by environments that encourage thoughtful exploration, collaboration, and long-term learning.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- News Section -->
+            <section class="section" id="news">
+                <div class="section-header">
+                    <span class="section-index">[01]</span>
+                    <span class="section-title">>NEWS_</span>
+                    <div class="section-line"></div>
+                </div>
+                <div class="section-content">
+                    <div class="achievement">
+                        <span class="achievement-date">[SEP_2025]</span>
+                        <span class="achievement-text">Paper accepted in COMPUTINGCON_2025</span>
+                    </div>
+                    <div class="achievement">
+                        <span class="achievement-date">[SEM1_2024]</span>
+                        <span class="achievement-text">Merit Scholarship — Half tuition fee for academic excellence</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Research Section -->
+            <section class="section" id="research">
+                <div class="section-header">
+                    <span class="section-index">[02]</span>
+                    <span class="section-title">>RESEARCH_</span>
+                    <div class="section-line"></div>
+                </div>
+                <div class="section-content">
+                    <div class="text-block">
+                        <p>
+                            My research interests focus on machine learning and reinforcement learning, with an emphasis on building models that are interpretable and reliable in real-world settings. I am particularly interested in understanding model behavior, improving robustness, and designing learning systems that generalize well. I am also keen on exploring deep learning and natural language processing, especially for developing scalable and trustworthy AI systems.
+                        </p>
+                    </div>
+
+                    <div class="text-block">
+                        <p class="list-heading">Primary research areas include:</p>
+                        <ul class="research-list">
+                            <li>Machine Learning (ML)</li>
+                            <li>Reinforcement Learning (RL)</li>
+                            <li>Model Interpretability and Reliability</li>
+                            <li>Deep Learning (DL)</li>
+                            <li>Natural Language Processing (NLP)</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection-header">PUBLICATIONS</div>
+
+                    <div class="publication">
+                        <div class="pub-header">
+                            <span class="pub-type">[PUBLICATION]</span>
+                            <span class="pub-status">ACCEPTED</span>
+                        </div>
+                        <h3 class="pub-title">"Early-Stage Diabetes Prediction using Stacked Learning"</h3>
+                        <div class="pub-meta">
+                            <div class="pub-venue">COMPUTINGCON_2025 // SEPTEMBER_2025</div>
+                            <div class="pub-mentor">
+                                <span class="mentor-label">MENTOR:</span>
+                                <span class="mentor-value">Prof. Rinkle Rani // CSE_DEPT // TIET</span>
+                            </div>
+                        </div>
+                        <div class="pub-tags">
+                            <span class="tag-sm">HEALTHCARE_ML</span>
+                            <span class="tag-sm">ENSEMBLE_LEARNING</span>
+                            <span class="tag-sm">CLASSIFICATION</span>
+                        </div>
+                    </div>
+
+                    <!-- NEW PUBLICATION -->
+                    <div class="publication">
+                        <div class="pub-header">
+                            <span class="pub-type">[PREPRINT]</span>
+                            <span class="pub-status">IN_REVIEW</span>
+                        </div>
+
+                        <h3 class="pub-title">"PLBench: A Synthetic Benchmark dataset for Propositional Logic Reasoning"</h3>
+
+                        <div class="pub-meta">
+                            <div class="pub-venue">ICBINB @ ICLR_2026</div>
+
+                            <div class="pub-mentor">
+                                <span class="mentor-label">AUTHORS:</span>
+                                <span class="mentor-value">
+                                    <a href="https://openreview.net/profile?id=~Sanjam_Wadhwa1" target="_blank" rel="noopener">Sanjam Wadhwa</a>,
+                                    <a href="https://openreview.net/profile?id=~Hrideya_Sharma1" target="_blank" rel="noopener">Hrideya Sharma</a>,
+                                    <a href="https://openreview.net/profile?id=~Shashank_singh3" target="_blank" rel="noopener">Shashank Singh</a>,
+                                    <a href="https://openreview.net/profile?id=~Saurabh_sharma4" target="_blank" rel="noopener">Saurabh Sharma</a>
+                                </span>
+                            </div>
+
+                            <div class="pub-mentor">
+                                <span class="mentor-label">MENTORS:</span>
+                                <span class="mentor-value">Shashank Singh // CSED // TIET</span>
+                                <span class="mentor-value">Saurabh Sharma // CSED // TIET</span>
+                            </div>
+                        </div>
+
+                        <div class="pub-tags">
+                            <span class="tag-sm">LOGIC_REASONING</span>
+                            <span class="tag-sm">SYNTHETIC_DATASET</span>
+                            <span class="tag-sm">BENCHMARK</span>
+                            <span class="tag-sm">PROPOSITIONAL_LOGIC</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="section" id="projects">
+                <div class="section-header">
+                    <span class="section-index">[03]</span>
+                    <span class="section-title">>PROJECTS_</span>
+                    <div class="section-line"></div>
+                </div>
+                <div class="section-content">
+
+                    <article class="project">
+                        <div class="project-header">
+                            <span class="project-number">01</span>
+                            <span class="project-type">[INTERACTIVE_TOOL]</span>
+                        </div>
+                        <h3 class="project-title">CurveLABS</h3>
+                        <p class="project-subtitle">MLP_VISUALIZER_FOR_HAND_DRAWN_CURVES</p>
+                        <p class="project-desc">
+                            Browser-based tool for drawing curves and training MLPs in real-time.
+                            Visualize neural network behavior as it learns to approximate hand-drawn functions.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech">TENSORFLOW.JS</span>
+                            <span class="tech">NEURAL_NETWORKS</span>
+                            <span class="tech">CANVAS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://idklol22.github.io/CurveLABS--MLP-Visualizer-for-hand-drawn-curve/" target="_blank" rel="noopener" class="project-link">[LIVE_DEMO]</a>
+                            <a href="https://github.com/idklol22/CurveLABS--MLP-Visualizer-for-hand-drawn-curve" target="_blank" rel="noopener" class="project-link">[SOURCE_CODE]</a>
+                        </div>
+                    </article>
+
+                    <article class="project">
+                        <div class="project-header">
+                            <span class="project-number">02</span>
+                            <span class="project-type">[VISUALIZATION]</span>
+                        </div>
+                        <h3 class="project-title">CHAOS_PARTICLE_SIMULATOR</h3>
+                        <p class="project-subtitle">STRANGE_ATTRACTORS_&_DYNAMICAL_SYSTEMS</p>
+                        <p class="project-desc">
+                            Interactive 3D visualization of chaotic systems and strange attractors.
+                            Real-time particle simulation featuring Lorenz attractors and dynamical systems.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech">THREE.JS</span>
+                            <span class="tech">CHAOS_THEORY</span>
+                            <span class="tech">WEBGL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://idklol22.github.io/Chaos-Particle-Simulator/" target="_blank" rel="noopener" class="project-link">[LIVE_DEMO]</a>
+                            <a href="https://github.com/idklol22/Chaos-Particle-Simulator" target="_blank" rel="noopener" class="project-link">[SOURCE_CODE]</a>
+                        </div>
+                    </article>
+
+                    <article class="project">
+                        <div class="project-header">
+                            <span class="project-number">03</span>
+                            <span class="project-type">[SOFTWARE]</span>
+                        </div>
+                        <h3 class="project-title">LIBRARY_MANAGEMENT_SYSTEM</h3>
+                        <p class="project-subtitle">CONSOLE_BASED_OOP_APPLICATION</p>
+                        <p class="project-desc">
+                            Feature-rich console application implementing OOP principles with role-based operations,
+                            modular design, exception handling, and user authentication.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech">C++</span>
+                            <span class="tech">DESIGN_PATTERNS</span>
+                            <span class="tech">OOP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/idklol22" class="project-link">[SOURCE_CODE]</a>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="section" id="skills">
+                <div class="section-header">
+                    <span class="section-index">[04]</span>
+                    <span class="section-title">>STACK_</span>
+                    <div class="section-line"></div>
+                </div>
+                <div class="section-content">
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <div class="skill-label">LANGUAGES://</div>
+                            <div class="skill-items">
+                                <span class="skill">PYTHON</span>
+                                <span class="skill">GO</span>
+                                <span class="skill">C++</span>
+                                <span class="skill">C</span>
+                                <span class="skill">JAVASCRIPT</span>
+                                <span class="skill">MATLAB</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-label">ML/DL://</div>
+                            <div class="skill-items">
+                                <span class="skill">PYTORCH</span>
+                                <span class="skill">TENSORFLOW</span>
+                                <span class="skill">JAX</span>
+                                <span class="skill">SCIKIT-LEARN</span>
+                                <span class="skill">LANGCHAIN</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-label">TOOLS://</div>
+                            <div class="skill-items">
+                                <span class="skill">GIT</span>
+                                <span class="skill">DOCKER</span>
+                                <span class="skill">LINUX</span>
+                                <span class="skill">AWS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notes Section -->
+            <section class="section" id="notes">
+                <div class="section-header">
+                    <span class="section-index">[05]</span>
+                    <span class="section-title">>NOTES_</span>
+                    <div class="section-line"></div>
+                </div>
+                <div class="section-content">
+                    <div class="notes-content">
+                        <p>MORE TO COME</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="section" id="experience">
+                <div class="section-header">
+                    <span class="section-index">[06]</span>
+                    <span class="section-title">>INVOLVEMENT_</span>
+                    <div class="section-line"></div>
+                </div>
+                <div class="section-content">
+
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <span class="exp-org">THAPAR_ACM_STUDENT_CHAPTER</span>
+                            <span class="exp-role">[CORE_MEMBER]</span>
+                        </div>
+                        <ul class="exp-list">
+                            <li>> Coordinates technical events and hackathons</li>
+                            <li>> Mentors juniors in AI/ML through workshops</li>
+                            <li>> Develops curriculum for ML fundamentals</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <span class="exp-org">MICROSOFT_LEARN_STUDENT_CHAPTER</span>
+                            <span class="exp-role">[EXECUTIVE_COMMITTEE]</span>
+                        </div>
+                        <ul class="exp-list">
+                            <li>> Led workshops on Microsoft technologies and cloud tools</li>
+                            <li>> Organized sessions on cloud computing and DevOps</li>
+                            <li>> Promoted Azure, GitHub, and modern dev workflows</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="section" id="contact">
+                <div class="section-header">
+                    <span class="section-index">[07]</span>
+                    <span class="section-title">>CONTACT_</span>
+                    <div class="section-line"></div>
+                </div>
+                <div class="section-content">
+                    <div class="contact-block">
+                        <div class="contact-intro">
+                            <p>
+                                Open to research internships in ML/AI and robotics, collaborative research projects,
+                                open-source contributions, and technical mentorship.
+                            </p>
+                        </div>
+                        <div class="contact-opportunities">
+                            <div class="opportunities-label">SEEKING://</div>
+                            <ul class="opportunities-list">
+                                <li>> Research internships in ML/AI</li>
+                                <li>> Collaborative research in healthcare AI</li>
+                                <li>> Open-source contributions in ML frameworks</li>
+                                <li>> Technical mentorship opportunities</li>
+                            </ul>
+                        </div>
+                        <div class="contact-cta">
+                            <a href="mailto:swadhwa.be24@thapar.edu" class="cta-link">
+                                <span class="cta-arrow">></span>
+                                <span class="cta-text">swadhwa.be24@thapar.edu</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-line"></div>
+                <div class="footer-content">
+                    <span class="footer-copy">© 2024 SANJAM_WADHWA</span>
+                    <span class="footer-divider">//</span>
+                    <span class="footer-built">BUILT_WITH_RAW_CODE</span>
+                </div>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header" id="mobile-header">
+        <div class="mobile-brand">SANJAM_W</div>
+        <div class="mobile-actions">
+            <button class="theme-toggle-mobile" id="theme-toggle-mobile" aria-label="Toggle theme">
+                <i class="fas fa-sun"></i>
+            </button>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <!-- Corner Decoration with Theme Toggle -->
+    <div class="corner-decoration top-right">
+        <span class="corner-text">SYS://ACTIVE</span>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <span class="toggle-text">LIGHT</span>
+        </button>
+    </div>
+
+    <script src="shader.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
