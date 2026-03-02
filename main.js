@@ -1,3 +1,4 @@
+// Theme Manager
 class ThemeManager {
     constructor() {
         this.toggle = document.getElementById('theme-toggle');
@@ -12,8 +13,7 @@ class ThemeManager {
         if (saved) {
             this.setTheme(saved);
         } else {
-            // Default to dark mode
-            this.setTheme('dark');
+            this.setTheme('light');
         }
 
         this.toggle?.addEventListener('click', () => {
@@ -28,7 +28,7 @@ class ThemeManager {
 
         this.prefersDark.addEventListener('change', (e) => {
             if (!localStorage.getItem('theme')) {
-                this.setTheme('dark');
+                this.setTheme('light');
             }
         });
     }
@@ -37,21 +37,18 @@ class ThemeManager {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
         if (this.toggleText) {
-            this.toggleText.textContent = theme === 'dark' ? 'LIGHT' : 'DARK';
+            this.toggleText.textContent = theme === 'light' ? 'DARK' : 'LIGHT';
         }
-        // Update mobile toggle icon
         if (this.toggleMobile) {
             const icon = this.toggleMobile.querySelector('i');
             if (icon) {
-                icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
             }
         }
     }
 }
 
-// ============================================
 // Mobile Menu
-// ============================================
 class MobileMenu {
     constructor() {
         this.menuToggle = document.getElementById('menu-toggle');
@@ -67,19 +64,16 @@ class MobileMenu {
         this.menuToggle.addEventListener('click', () => this.toggle());
         this.overlay?.addEventListener('click', () => this.close());
 
-        // Close menu when nav item is clicked
         this.navItems.forEach(item => {
             item.addEventListener('click', () => this.close());
         });
 
-        // Close on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.isOpen) {
                 this.close();
             }
         });
 
-        // Handle resize
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768 && this.isOpen) {
                 this.close();
@@ -108,9 +102,7 @@ class MobileMenu {
     }
 }
 
-// ============================================
-// Name Scramble Effect (same as old tagline)
-// ============================================
+// Name Scramble
 class NameScramble {
     constructor() {
         this.elements = document.querySelectorAll('.name-line');
@@ -124,14 +116,38 @@ class NameScramble {
             const originalText = el.getAttribute('data-text');
             el.textContent = '';
 
-            // Stagger the animations
             setTimeout(() => this.scrambleIn(el, originalText), 200 + index * 300);
 
-            // Re-scramble on hover
             el.addEventListener('mouseenter', () => {
                 this.scrambleText(el, originalText);
             });
+
+            this.periodicGlitch(el, originalText);
         });
+    }
+
+    periodicGlitch(element, text) {
+        const glitch = () => {
+            const delay = 4000 + Math.random() * 8000;
+            setTimeout(() => {
+                // Quick 2-3 character flicker
+                const pos = Math.floor(Math.random() * (text.length - 2));
+                const original = element.textContent;
+                if (original !== text) { glitch(); return; }
+
+                const glitched = text.split('').map((c, i) => {
+                    if (i >= pos && i < pos + 2 + Math.floor(Math.random() * 2)) {
+                        return this.chars[Math.floor(Math.random() * this.chars.length)];
+                    }
+                    return c;
+                }).join('');
+
+                element.textContent = glitched;
+                setTimeout(() => { element.textContent = text; }, 80 + Math.random() * 60);
+                glitch();
+            }, delay);
+        };
+        glitch();
     }
 
     scrambleIn(element, text) {
@@ -180,9 +196,7 @@ class NameScramble {
     }
 }
 
-// ============================================
-// Tagline Typing Effect (no hover scramble)
-// ============================================
+// Tagline Typing
 class TaglineTyping {
     constructor() {
         this.element = document.getElementById('tagline');
@@ -193,8 +207,6 @@ class TaglineTyping {
 
     init() {
         this.element.textContent = '';
-
-        // Start typing after name scramble finishes
         setTimeout(() => this.typeText(), 1000);
     }
 
@@ -205,7 +217,7 @@ class TaglineTyping {
             if (i < this.text.length) {
                 this.element.textContent += this.text.charAt(i);
                 i++;
-                // Variable typing speed for realistic feel
+                // Variable speed for realistic feel
                 const delay = 50 + Math.random() * 40;
                 setTimeout(type, delay);
             }
@@ -215,9 +227,7 @@ class TaglineTyping {
     }
 }
 
-// ============================================
-// Smooth Scroll & Active Navigation
-// ============================================
+// Navigation
 class Navigation {
     constructor() {
         this.links = document.querySelectorAll('.nav-item');
@@ -234,7 +244,6 @@ class Navigation {
                     e.preventDefault();
                     const target = document.querySelector(href);
                     if (target) {
-                        // Larger offset on mobile to account for fixed header
                         const offset = this.isMobile ? 80 : 80;
                         const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
                         window.scrollTo({ top: y, behavior: 'smooth' });
@@ -270,18 +279,68 @@ class Navigation {
     }
 }
 
-// ============================================
-// Scroll Reveal Animations - DISABLED
-// ============================================
+// Scroll Reveal
 class ScrollReveal {
     constructor() {
-        // Disabled - no fade-in animation on scroll
+        this.sections = document.querySelectorAll('.section');
+        if (this.sections.length) this.init();
+    }
+
+    init() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -60px 0px'
+        });
+
+        this.sections.forEach(section => observer.observe(section));
     }
 }
 
-// ============================================
+// Scroll Progress
+class ScrollProgress {
+    constructor() {
+        this.leftPanel = document.querySelector('.left-panel');
+        if (this.leftPanel && window.innerWidth > 768) this.init();
+    }
+
+    init() {
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+            this.leftPanel.style.setProperty('--scroll-progress', progress);
+        }, { passive: true });
+    }
+}
+
+// Corner Clock
+class CornerClock {
+    constructor() {
+        this.element = document.querySelector('.corner-text');
+        if (this.element) this.init();
+    }
+
+    init() {
+        this.update();
+        setInterval(() => this.update(), 30000);
+    }
+
+    update() {
+        const now = new Date();
+        const h = String(now.getHours()).padStart(2, '0');
+        const m = String(now.getMinutes()).padStart(2, '0');
+        this.element.textContent = `SYS://${h}:${m}`;
+    }
+}
+
 // Keyboard Navigation
-// ============================================
 class KeyboardNav {
     constructor() {
         this.sections = Array.from(document.querySelectorAll('.section[id]'));
@@ -321,9 +380,7 @@ class KeyboardNav {
     }
 }
 
-// ============================================
-// Status Typing Effect
-// ============================================
+// Status Typing
 class StatusTyping {
     constructor() {
         this.element = document.querySelector('.status-text');
@@ -348,9 +405,28 @@ class StatusTyping {
     }
 }
 
-// ============================================
+// Seasonal Footer
+class SeasonalFooter {
+    constructor() {
+        this.element = document.getElementById('footer-seasonal');
+        if (this.element) this.init();
+    }
+
+    init() {
+        const month = new Date().getMonth();
+        const seasons = [
+            { name: 'FUYU', meaning: 'winter' },
+            { name: 'HARU', meaning: 'spring' },
+            { name: 'NATSU', meaning: 'summer' },
+            { name: 'AKI', meaning: 'autumn' }
+        ];
+        const index = month < 2 ? 0 : month < 5 ? 1 : month < 8 ? 2 : month < 11 ? 3 : 0;
+        const season = seasons[index];
+        this.element.textContent = `${season.name} // ${season.meaning}`;
+    }
+}
+
 // Console Easter Egg
-// ============================================
 class ConsoleMessage {
     constructor() {
         const styles = 'color:#fff;background:#000;padding:12px 24px;font-family:monospace;font-size:14px;';
@@ -359,9 +435,7 @@ class ConsoleMessage {
     }
 }
 
-// ============================================
 // Initialize
-// ============================================
 document.addEventListener('DOMContentLoaded', () => {
     new ThemeManager();
     new MobileMenu();
@@ -369,14 +443,15 @@ document.addEventListener('DOMContentLoaded', () => {
     new TaglineTyping();
     new Navigation();
     new ScrollReveal();
+    new ScrollProgress();
+    new CornerClock();
     new KeyboardNav();
     new StatusTyping();
+    new SeasonalFooter();
     new ConsoleMessage();
 });
 
-// ============================================
 // Reduced Motion Support
-// ============================================
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.documentElement.style.setProperty('--transition-fast', '0.01ms');
     document.documentElement.style.setProperty('--transition-base', '0.01ms');

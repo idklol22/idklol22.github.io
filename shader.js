@@ -189,9 +189,9 @@ class QuantizedNoiseGrid {
                 // ============================================
                 // Animated Grain per-cell
                 // ============================================
-                float grainSpeed = 12.0;
+                float grainSpeed = 8.0;
                 float grain = hash2D(gridPos, floor(t * grainSpeed));
-                float grainIntensity = grain * 0.4 * quantizedWave;
+                float grainIntensity = grain * 0.2 * quantizedWave;
 
                 // ============================================
                 // Radial Mask
@@ -228,9 +228,9 @@ class QuantizedNoiseGrid {
 
                 vec3 color;
                 if (u_isDark > 0.5) {
-                    color = vec3(cellBrightness * 0.12);
+                    color = vec3(0.067 + cellBrightness * 0.06);
                 } else {
-                    color = vec3(0.94 - cellBrightness * 0.18);
+                    color = vec3(0.98 - cellBrightness * 0.06);
                 }
 
                 gl_FragColor = vec4(color, 1.0);
@@ -328,7 +328,7 @@ class QuantizedNoiseGrid {
     }
 
     checkTheme() {
-        this.isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+        this.isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     }
 
     animate() {

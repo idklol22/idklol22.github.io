@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Sanjam Wadhwa - Undergraduate ML Researcher at Thapar Institute. Focused on Machine Learning, Reinforcement Learning, and building interpretable AI systems.">
     <meta name="keywords" content="Machine Learning, AI, Researcher, Thapar, ML Engineer, Deep Learning">
     <meta name="author" content="Sanjam Wadhwa">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#f7f5f0">
 
     <title>SANJAM WADHWA — ML RESEARCHER</title>
 
@@ -14,23 +14,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap" rel="stylesheet">
 
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- WebGL Canvas for Shader Background -->
     <canvas id="shader-bg"></canvas>
 
-    <!-- Scan Lines Overlay -->
     <div class="scanlines"></div>
 
-    <!-- Main Container -->
     <div class="brutalist-container">
 
-        <!-- Left Panel - Fixed -->
         <aside class="left-panel" id="left-panel">
             <header class="brand">
                 <div class="brand-name">
@@ -99,13 +93,15 @@
                 </div>
             </div>
 
-            <div class="left-footer"></div>
+            <div class="left-footer">
+                <svg class="ensou" viewBox="0 0 48 48" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M24 4C35 4 44 13 44 24C44 35 35 44 24 44C13 44 4 35 4 24C4 16 9 9 16 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.2"/>
+                </svg>
+            </div>
         </aside>
 
-        <!-- Right Panel - Scrollable -->
         <main class="right-panel" id="right-panel">
 
-            <!-- About Section -->
             <section class="section" id="about">
                 <div class="section-header">
                     <span class="section-index">[00]</span>
@@ -126,7 +122,6 @@
                 </div>
             </section>
 
-            <!-- News Section -->
             <section class="section" id="news">
                 <div class="section-header">
                     <span class="section-index">[01]</span>
@@ -145,7 +140,6 @@
                 </div>
             </section>
 
-            <!-- Research Section -->
             <section class="section" id="research">
                 <div class="section-header">
                     <span class="section-index">[02]</span>
@@ -174,25 +168,34 @@
 
                     <div class="publication">
                         <div class="pub-header">
-                            <span class="pub-type">[PUBLICATION]</span>
-                            <span class="pub-status">ACCEPTED</span>
+                            <span class="pub-type">[PREPRINT]</span>
+                            <span class="pub-status">IN_REVIEW</span>
                         </div>
-                        <h3 class="pub-title">"Early-Stage Diabetes Prediction using Stacked Learning"</h3>
+
+                        <h3 class="pub-title">"COBALT: Non-Invasive Tuberculosis Detection from Cough Audio using Bandit-Weighted Prototype Framework"</h3>
+
                         <div class="pub-meta">
-                            <div class="pub-venue">COMPUTINGCON_2025 // SEPTEMBER_2025</div>
+                            <div class="pub-venue">INTERSPEECH_2026 // MAIN_CONFERENCE</div>
+
                             <div class="pub-mentor">
-                                <span class="mentor-label">MENTOR:</span>
-                                <span class="mentor-value">Prof. Rinkle Rani // CSE_DEPT // TIET</span>
+                                <span class="mentor-label">AUTHORS:</span>
+                                <span class="mentor-value">MM Akhtar, Girish, Sanjam Wadhwa, Muskaan Singh</span>
+                            </div>
+
+                            <div class="pub-mentor">
+                                <span class="mentor-label">MENTORS:</span>
+                                <span class="mentor-value">Muskaan Singh, MM Akhtar, Girish</span>
                             </div>
                         </div>
+
                         <div class="pub-tags">
-                            <span class="tag-sm">HEALTHCARE_ML</span>
-                            <span class="tag-sm">ENSEMBLE_LEARNING</span>
-                            <span class="tag-sm">CLASSIFICATION</span>
+                            <span class="tag-sm">HEALTHCARE_AI</span>
+                            <span class="tag-sm">AUDIO_ANALYSIS</span>
+                            <span class="tag-sm">PROTOTYPE_NETWORKS</span>
+                            <span class="tag-sm">TUBERCULOSIS</span>
                         </div>
                     </div>
 
-                    <!-- NEW PUBLICATION -->
                     <div class="publication">
                         <div class="pub-header">
                             <span class="pub-type">[PREPRINT]</span>
@@ -216,8 +219,7 @@
 
                             <div class="pub-mentor">
                                 <span class="mentor-label">MENTORS:</span>
-                                <span class="mentor-value">Shashank Singh // CSED // TIET</span>
-                                <span class="mentor-value">Saurabh Sharma // CSED // TIET</span>
+                                <span class="mentor-value">Shashank Singh, Saurabh Sharma // CSED // TIET</span>
                             </div>
                         </div>
 
@@ -228,10 +230,29 @@
                             <span class="tag-sm">PROPOSITIONAL_LOGIC</span>
                         </div>
                     </div>
+
+                    <div class="publication">
+                        <div class="pub-header">
+                            <span class="pub-type">[PUBLICATION]</span>
+                            <span class="pub-status">ACCEPTED</span>
+                        </div>
+                        <h3 class="pub-title">"Early-Stage Diabetes Prediction using Stacked Learning"</h3>
+                        <div class="pub-meta">
+                            <div class="pub-venue">COMPUTINGCON_2025 // SEPTEMBER_2025</div>
+                            <div class="pub-mentor">
+                                <span class="mentor-label">MENTOR:</span>
+                                <span class="mentor-value">Prof. Rinkle Rani // CSE_DEPT // TIET</span>
+                            </div>
+                        </div>
+                        <div class="pub-tags">
+                            <span class="tag-sm">HEALTHCARE_ML</span>
+                            <span class="tag-sm">ENSEMBLE_LEARNING</span>
+                            <span class="tag-sm">CLASSIFICATION</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <!-- Projects Section -->
             <section class="section" id="projects">
                 <div class="section-header">
                     <span class="section-index">[03]</span>
@@ -308,7 +329,6 @@
                 </div>
             </section>
 
-            <!-- Skills Section -->
             <section class="section" id="skills">
                 <div class="section-header">
                     <span class="section-index">[04]</span>
@@ -351,7 +371,6 @@
                 </div>
             </section>
 
-            <!-- Notes Section -->
             <section class="section" id="notes">
                 <div class="section-header">
                     <span class="section-index">[05]</span>
@@ -365,7 +384,6 @@
                 </div>
             </section>
 
-            <!-- Experience Section -->
             <section class="section" id="experience">
                 <div class="section-header">
                     <span class="section-index">[06]</span>
@@ -401,7 +419,6 @@
                 </div>
             </section>
 
-            <!-- Contact Section -->
             <section class="section" id="contact">
                 <div class="section-header">
                     <span class="section-index">[07]</span>
@@ -435,26 +452,27 @@
                 </div>
             </section>
 
-            <!-- Footer -->
             <footer class="footer">
                 <div class="footer-line"></div>
                 <div class="footer-content">
                     <span class="footer-copy">© 2024 SANJAM_WADHWA</span>
                     <span class="footer-divider">//</span>
                     <span class="footer-built">BUILT_WITH_RAW_CODE</span>
+                    <span class="footer-divider">//</span>
+                    <span class="footer-built">LAST_COMPILED: MAR_2026</span>
                 </div>
+                <div class="footer-seasonal" id="footer-seasonal"></div>
             </footer>
 
         </main>
 
     </div>
 
-    <!-- Mobile Header -->
     <header class="mobile-header" id="mobile-header">
         <div class="mobile-brand">SANJAM_W</div>
         <div class="mobile-actions">
             <button class="theme-toggle-mobile" id="theme-toggle-mobile" aria-label="Toggle theme">
-                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
             </button>
             <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
                 <span class="hamburger-line"></span>
@@ -464,14 +482,12 @@
         </div>
     </header>
 
-    <!-- Mobile Menu Overlay -->
     <div class="mobile-overlay" id="mobile-overlay"></div>
 
-    <!-- Corner Decoration with Theme Toggle -->
     <div class="corner-decoration top-right">
-        <span class="corner-text">SYS://ACTIVE</span>
+        <span class="corner-text">SYS://--:--</span>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-            <span class="toggle-text">LIGHT</span>
+            <span class="toggle-text">DARK</span>
         </button>
     </div>
 
