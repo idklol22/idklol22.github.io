@@ -4,7 +4,9 @@
 class ThemeManager {
     constructor() {
         this.btn = document.getElementById('theme-toggle');
+        this.mobileBtn = document.getElementById('mobile-theme-toggle');
         this.icon = document.getElementById('mode-icon');
+        this.mobileIcon = document.getElementById('mobile-mode-icon');
         this.init();
     }
 
@@ -12,6 +14,7 @@ class ThemeManager {
         const saved = localStorage.getItem('theme');
         this.set(saved || 'light');
         this.btn?.addEventListener('click', () => this.flip());
+        this.mobileBtn?.addEventListener('click', () => this.flip());
     }
 
     flip() {
@@ -22,7 +25,9 @@ class ThemeManager {
     set(theme) {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
-        if (this.icon) this.icon.textContent = theme === 'light' ? '☽' : '☀';
+        const iconChar = theme === 'light' ? '☽' : '☀';
+        if (this.icon) this.icon.textContent = iconChar;
+        if (this.mobileIcon) this.mobileIcon.textContent = iconChar;
     }
 }
 
@@ -155,6 +160,7 @@ class TabManager {
 class ScraperMode {
     constructor() {
         this.btn = document.getElementById('scraper-btn');
+        this.mobileBtn = document.getElementById('mobile-scraper-btn');
         this.overlay = document.getElementById('scraper-overlay');
         this.content = document.getElementById('scraper-content');
         this.copyBtn = document.getElementById('scraper-copy');
@@ -164,6 +170,7 @@ class ScraperMode {
 
     init() {
         this.btn?.addEventListener('click', () => this.open());
+        this.mobileBtn?.addEventListener('click', () => this.open());
         this.closeBtn?.addEventListener('click', () => this.close());
         this.overlay.addEventListener('click', (e) => { if (e.target === this.overlay) this.close(); });
         this.copyBtn?.addEventListener('click', () => this.copy());

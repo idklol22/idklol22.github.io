@@ -146,6 +146,37 @@ body::before {
     user-select: none;
 }
 
+/* Container for mobile action buttons + toggle arrow, pushed to the right */
+.win-bar-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+}
+
+/* Mobile action icons — hidden on desktop */
+.mobile-action-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.mobile-action-btn:hover,
+.mobile-action-btn:active {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--hover-glow);
+}
+
 .win-dots {
     display: flex;
     gap: 5px;
@@ -1135,6 +1166,16 @@ body::before {
     .mobile-toggle {
         display: inline-flex;
         align-items: center;
+    }
+
+    /* Show mobile action icons in win-bar */
+    .mobile-action-btn {
+        display: flex;
+    }
+
+    /* Hide the desktop sidebar-bottom on mobile (buttons are in win-bar now) */
+    .sidebar-bottom {
+        display: none;
     }
 
     .toggle-icon {
