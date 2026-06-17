@@ -635,7 +635,7 @@ body::before {
    ============================================ */
 
 .news-scroll-bar {
-    max-height: 94px;
+    max-height: 141px;
     overflow-y: auto;
     border: 1px solid var(--border);
     border-radius: 4px;
