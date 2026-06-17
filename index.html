@@ -3,20 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description"
-        content="Sanjam Wadhwa - Undergraduate ML Researcher at Thapar Institute. Focused on Machine Learning, Reinforcement Learning, and building interpretable AI systems.">
-    <meta name="keywords" content="Machine Learning, AI, Researcher, Thapar, ML Engineer, Deep Learning">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sanjam Wadhwa — Undergraduate ML Researcher at TIET. Machine Learning, Reinforcement Learning, Interpretable AI.">
     <meta name="author" content="Sanjam Wadhwa">
-    <meta name="theme-color" content="#f5f0e6">
-
-    <title>Sanjam Wadhwa — ML Researcher</title>
+    <title>Sanjam Wadhwa</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 
     <script type="application/ld+json">
@@ -26,12 +20,7 @@
         "name": "Sanjam Wadhwa",
         "url": "https://idklol22.github.io",
         "jobTitle": "Undergraduate ML Researcher",
-        "affiliation": {
-            "@type": "CollegeOrUniversity",
-            "name": "Thapar Institute of Engineering & Technology"
-        },
-        "description": "Undergraduate CS student and ML researcher focused on machine learning, reinforcement learning, and building interpretable AI systems.",
-        "knowsAbout": ["Machine Learning", "Reinforcement Learning", "Deep Learning", "Natural Language Processing", "Model Interpretability"],
+        "affiliation": { "@type": "CollegeOrUniversity", "name": "Thapar Institute of Engineering & Technology" },
         "email": "swadhwa.be24@thapar.edu",
         "sameAs": [
             "https://github.com/idklol22",
@@ -45,455 +34,256 @@
 <body>
     <canvas id="shader-bg"></canvas>
 
-    <!-- ========== TOP NAVIGATION (Desktop) ========== -->
-    <nav class="top-nav" id="top-nav">
-        <div class="nav-inner">
-            <a href="#" class="nav-brand">
-                <span class="glitch" data-text="SANJAM WADHWA">SANJAM WADHWA</span>
-            </a>
-            <div class="nav-links" id="nav-links">
-                <a href="#about" class="nav-link active">About</a>
-                <a href="#news" class="nav-link">News</a>
-                <a href="#research" class="nav-link">Research</a>
-                <a href="#publications" class="nav-link">Publications</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#stack" class="nav-link">Stack</a>
-                <a href="#involvement" class="nav-link">Involvement</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <div class="nav-actions">
-                <button class="mode-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark">
-                    <span class="mode-icon" id="mode-icon">☽</span>
-                </button>
-                <button class="mode-btn scraper-btn" id="scraper-btn" aria-label="Scraper mode" title="Plain text for LLMs">
-                    <span>&lt;/&gt;</span>
-                </button>
-            </div>
-        </div>
-    </nav>
+    <div class="layout">
 
-    <!-- ========== MOBILE HEADER ========== -->
-    <header class="mobile-header" id="mobile-header">
-        <span class="mobile-brand glitch" data-text="SANJAM_W">SANJAM_W</span>
-        <div class="mobile-actions">
-            <button class="mode-btn" id="theme-toggle-mobile" aria-label="Toggle theme">
-                <span class="mode-icon-mobile" id="mode-icon-mobile">☽</span>
-            </button>
-            <button class="mode-btn" id="scraper-btn-mobile" aria-label="Scraper mode">
-                <span>&lt;/&gt;</span>
-            </button>
-            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </header>
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SIDEBAR                                 -->
+        <!-- ═══════════════════════════════════════ -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-inner">
 
-    <!-- ========== MOBILE MENU ========== -->
-    <div class="mobile-menu" id="mobile-menu">
-        <nav class="mobile-menu-nav">
-            <a href="#about" class="mobile-nav-link"><span class="mnl-idx">00</span> About</a>
-            <a href="#news" class="mobile-nav-link"><span class="mnl-idx">01</span> News</a>
-            <a href="#research" class="mobile-nav-link"><span class="mnl-idx">02</span> Research</a>
-            <a href="#publications" class="mobile-nav-link"><span class="mnl-idx">03</span> Publications</a>
-            <a href="#projects" class="mobile-nav-link"><span class="mnl-idx">04</span> Projects</a>
-            <a href="#stack" class="mobile-nav-link"><span class="mnl-idx">05</span> Stack</a>
-            <a href="#involvement" class="mobile-nav-link"><span class="mnl-idx">06</span> Involvement</a>
-            <a href="#contact" class="mobile-nav-link"><span class="mnl-idx">07</span> Contact</a>
-        </nav>
-        <div class="mobile-menu-socials">
-            <a href="https://github.com/idklol22" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/sanjam-wadhwa-853985334/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.kaggle.com/sanjamw" target="_blank" rel="noopener"><i class="fab fa-kaggle"></i></a>
-            <a href="mailto:swadhwa.be24@thapar.edu"><i class="fas fa-envelope"></i></a>
-        </div>
-    </div>
-    <div class="mobile-overlay" id="mobile-overlay"></div>
-
-    <!-- ========== MAIN CONTENT ========== -->
-    <main class="content" id="content">
-
-        <!-- ABOUT / HERO -->
-        <section class="section" id="about">
-            <div class="section-inner">
-                <div class="hero-intro">
-                    <div class="tagline-wrap">
-                        <span class="tagline-text" id="tagline">Building Intelligent Systems</span><span class="blinking-cursor">█</span>
-                    </div>
-                </div>
-                <div class="about-text">
-                    <p>
-                        I'm Sanjam Wadhwa, an undergraduate student studying Computer Science at Thapar Institute of
-                        Engineering & Technology. I'm curious about how complex systems work and enjoy learning by
-                        exploring challenging ideas and problems. As a student, I value asking good questions,
-                        building strong fundamentals, and gradually developing a deeper understanding through
-                        coursework, reading, and projects.
-                    </p>
-                    <p>
-                        I'm interested in growing as a researcher and learner, and I'm motivated by environments
-                        that encourage thoughtful exploration, collaboration, and long-term learning.
-                    </p>
-                </div>
-                <div class="hero-links">
-                    <a href="https://github.com/idklol22" target="_blank" rel="noopener" class="social-chip">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="https://www.linkedin.com/in/sanjam-wadhwa-853985334/" target="_blank" rel="noopener" class="social-chip">
-                        <i class="fab fa-linkedin-in"></i> LinkedIn
-                    </a>
-                    <a href="https://www.kaggle.com/sanjamw" target="_blank" rel="noopener" class="social-chip">
-                        <i class="fab fa-kaggle"></i> Kaggle
-                    </a>
-                    <a href="mailto:swadhwa.be24@thapar.edu" class="social-chip">
-                        <i class="fas fa-envelope"></i> Email
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- NEWS — Horizontal Slider -->
-        <section class="section" id="news">
-            <div class="section-inner">
-                <div class="section-header">
-                    <span class="sh-arrow">▸</span>
-                    <span class="sh-index">01</span>
-                    <span class="sh-title">NEWS</span>
-                    <div class="sh-line"></div>
-                </div>
-                <div class="slider">
-                    <div class="slider-track" id="news-slider">
-                        <div class="news-card pixel-card">
-                            <span class="news-date">New</span>
-                            <p class="news-text">Accepted in <strong>IIIT H</strong> for Undergrad lateral entry</p>
-                        </div>
-                        <div class="news-card pixel-card">
-                            <span class="news-date">Jun 2026</span>
-                            <p class="news-text">Paper accepted in <strong>INTERSPEECH 2026</strong></p>
-                        </div>
-                        <div class="news-card pixel-card">
-                            <span class="news-date">May 2026</span>
-                            <p class="news-text">Paper accepted in <strong>COLORAI workshop @ ICML 2026</strong></p>
-                        </div>
-                        <div class="news-card pixel-card">
-                            <span class="news-date">Sep 2025</span>
-                            <p class="news-text">Paper accepted in <strong>ComputingCon 2025</strong></p>
-                        </div>
-                        <div class="news-card pixel-card">
-                            <span class="news-date">Sem 1, 2024</span>
-                            <p class="news-text"><strong>Merit Scholarship</strong> — Half tuition fee for academic excellence</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- RESEARCH -->
-        <section class="section" id="research">
-            <div class="section-inner">
-                <div class="section-header">
-                    <span class="sh-arrow">▸</span>
-                    <span class="sh-index">02</span>
-                    <span class="sh-title">RESEARCH</span>
-                    <div class="sh-line"></div>
-                </div>
-                <div class="about-text">
-                    <p>
-                        My research interests focus on machine learning and reinforcement learning, with an emphasis
-                        on building models that are interpretable and reliable in real-world settings. I am
-                        particularly interested in understanding model behavior, improving robustness, and designing
-                        learning systems that generalize well. I am also keen on exploring deep learning and natural
-                        language processing, especially for developing scalable and trustworthy AI systems.
-                    </p>
-                </div>
-                <ul class="research-list">
-                    <li>Machine Learning (ML)</li>
-                    <li>Reinforcement Learning (RL)</li>
-                    <li>Model Interpretability and Reliability</li>
-                    <li>Deep Learning (DL)</li>
-                    <li>Natural Language Processing (NLP)</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- PUBLICATIONS — Horizontal Slider -->
-        <section class="section" id="publications">
-            <div class="section-inner">
-                <div class="section-header">
-                    <span class="sh-arrow">▸</span>
-                    <span class="sh-index">03</span>
-                    <span class="sh-title">PUBLICATIONS</span>
-                    <div class="sh-line"></div>
-                </div>
-                <div class="slider">
-                    <div class="slider-track" id="pub-slider">
-
-                        <div class="pub-card pixel-card">
-                            <div class="pub-badge">ACCEPTED</div>
-                            <h3 class="pub-title">"From Signals to Patterns: Non-Invasive Tuberculosis Detection from Cough Audio using Bandit Weighted Hyperbolic Prototypes"</h3>
-                            <div class="pub-venue">INTERSPEECH 2026 · Main Conference</div>
-                            <div class="pub-authors">
-                                <span class="pub-label">Authors:</span> MM Akhtar, Girish, Sanjam Wadhwa, Muskaan Singh
-                            </div>
-                            <div class="pub-authors">
-                                <span class="pub-label">Mentors:</span> Muskaan Singh, MM Akhtar, Girish
-                            </div>
-                            <div class="pub-tags">
-                                <span class="ptag">Healthcare AI</span>
-                                <span class="ptag">Audio Analysis</span>
-                                <span class="ptag">Prototype Networks</span>
-                            </div>
-                        </div>
-
-                        <div class="pub-card pixel-card">
-                            <div class="pub-badge">ACCEPTED</div>
-                            <h3 class="pub-title">"Less is More in Kolmogorov-Arnold Networks: The Shared-Atom Architecture"</h3>
-                            <div class="pub-venue">COLORAI @ ICML 2026</div>
-                            <div class="pub-authors">
-                                <span class="pub-label">Authors:</span> Sanjam Wadhwa, Hrideya Sharma, Shashank Singh, Saurabh Sharma
-                            </div>
-                            <div class="pub-authors">
-                                <span class="pub-label">Mentors:</span> Shashank Singh, Saurabh Sharma
-                            </div>
-                            <div class="pub-tags">
-                                <span class="ptag">KAN</span>
-                                <span class="ptag">Deep Learning</span>
-                                <span class="ptag">Network Architecture</span>
-                            </div>
-                        </div>
-
-                        <div class="pub-card pixel-card">
-                            <div class="pub-badge">ACCEPTED</div>
-                            <h3 class="pub-title">"Early-Stage Diabetes Prediction using Stacked Learning"</h3>
-                            <div class="pub-venue">ComputingCon 2025 · September 2025</div>
-                            <div class="pub-authors">
-                                <span class="pub-label">Mentor:</span> Prof. Rinkle Rani · CSE Dept · TIET
-                            </div>
-                            <div class="pub-tags">
-                                <span class="ptag">Healthcare ML</span>
-                                <span class="ptag">Ensemble Learning</span>
-                                <span class="ptag">Classification</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROJECTS -->
-        <section class="section" id="projects">
-            <div class="section-inner">
-                <div class="section-header">
-                    <span class="sh-arrow">▸</span>
-                    <span class="sh-index">04</span>
-                    <span class="sh-title">PROJECTS</span>
-                    <div class="sh-line"></div>
-                </div>
-
-                <article class="project-card pixel-card">
-                    <div class="proj-top">
-                        <span class="proj-num">01</span>
-                        <span class="proj-type">Interactive Tool</span>
-                    </div>
-                    <h3 class="proj-title">CurveLABS</h3>
-                    <p class="proj-sub">MLP Visualizer for Hand-Drawn Curves</p>
-                    <p class="proj-desc">
-                        Browser-based tool for drawing curves and training MLPs in real-time.
-                        Visualize neural network behavior as it learns to approximate hand-drawn functions.
-                    </p>
-                    <div class="proj-tech">
-                        <span class="ptag">TensorFlow.js</span>
-                        <span class="ptag">Neural Networks</span>
-                        <span class="ptag">Canvas</span>
-                    </div>
-                    <div class="proj-links">
-                        <a href="https://idklol22.github.io/CurveLABS--MLP-Visualizer-for-hand-drawn-curve/"
-                            target="_blank" rel="noopener" class="proj-link">Live Demo →</a>
-                        <a href="https://github.com/idklol22/CurveLABS--MLP-Visualizer-for-hand-drawn-curve"
-                            target="_blank" rel="noopener" class="proj-link">Source Code</a>
-                    </div>
-                </article>
-
-                <article class="project-card pixel-card">
-                    <div class="proj-top">
-                        <span class="proj-num">02</span>
-                        <span class="proj-type">Visualization</span>
-                    </div>
-                    <h3 class="proj-title">Chaos Particle Simulator</h3>
-                    <p class="proj-sub">Strange Attractors & Dynamical Systems</p>
-                    <p class="proj-desc">
-                        Interactive 3D visualization of chaotic systems and strange attractors.
-                        Real-time particle simulation featuring Lorenz attractors and dynamical systems.
-                    </p>
-                    <div class="proj-tech">
-                        <span class="ptag">Three.js</span>
-                        <span class="ptag">Chaos Theory</span>
-                        <span class="ptag">WebGL</span>
-                    </div>
-                    <div class="proj-links">
-                        <a href="https://idklol22.github.io/Chaos-Particle-Simulator/" target="_blank"
-                            rel="noopener" class="proj-link">Live Demo →</a>
-                        <a href="https://github.com/idklol22/Chaos-Particle-Simulator" target="_blank"
-                            rel="noopener" class="proj-link">Source Code</a>
-                    </div>
-                </article>
-
-                <article class="project-card pixel-card">
-                    <div class="proj-top">
-                        <span class="proj-num">03</span>
-                        <span class="proj-type">Software</span>
-                    </div>
-                    <h3 class="proj-title">Library Management System</h3>
-                    <p class="proj-sub">Console-Based OOP Application</p>
-                    <p class="proj-desc">
-                        Feature-rich console application implementing OOP principles with role-based operations,
-                        modular design, exception handling, and user authentication.
-                    </p>
-                    <div class="proj-tech">
-                        <span class="ptag">C++</span>
-                        <span class="ptag">Design Patterns</span>
-                        <span class="ptag">OOP</span>
-                    </div>
-                    <div class="proj-links">
-                        <a href="https://github.com/idklol22" class="proj-link">Source Code</a>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-        <!-- STACK -->
-        <section class="section" id="stack">
-            <div class="section-inner">
-                <div class="section-header">
-                    <span class="sh-arrow">▸</span>
-                    <span class="sh-index">05</span>
-                    <span class="sh-title">STACK</span>
-                    <div class="sh-line"></div>
-                </div>
-                <div class="stack-grid">
-                    <div class="stack-row">
-                        <span class="stack-label">Languages</span>
-                        <div class="stack-items">
-                            <span class="skill">Python</span>
-                            <span class="skill">Go</span>
-                            <span class="skill">C++</span>
-                            <span class="skill">C</span>
-                            <span class="skill">JavaScript</span>
-                            <span class="skill">MATLAB</span>
-                        </div>
-                    </div>
-                    <div class="stack-row">
-                        <span class="stack-label">ML / DL</span>
-                        <div class="stack-items">
-                            <span class="skill">PyTorch</span>
-                            <span class="skill">TensorFlow</span>
-                            <span class="skill">JAX</span>
-                            <span class="skill">Scikit-learn</span>
-                            <span class="skill">LangChain</span>
-                        </div>
-                    </div>
-                    <div class="stack-row">
-                        <span class="stack-label">Tools</span>
-                        <div class="stack-items">
-                            <span class="skill">Git</span>
-                            <span class="skill">Docker</span>
-                            <span class="skill">Linux</span>
-                            <span class="skill">AWS</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- INVOLVEMENT -->
-        <section class="section" id="involvement">
-            <div class="section-inner">
-                <div class="section-header">
-                    <span class="sh-arrow">▸</span>
-                    <span class="sh-index">06</span>
-                    <span class="sh-title">INVOLVEMENT</span>
-                    <div class="sh-line"></div>
-                </div>
-
-                <div class="exp-item">
-                    <div class="exp-top">
-                        <span class="exp-org">Thapar ACM Student Chapter</span>
-                        <span class="exp-role">Core Member</span>
-                    </div>
-                    <ul class="exp-list">
-                        <li>Coordinates technical events and hackathons</li>
-                        <li>Mentors juniors in AI/ML through workshops</li>
-                        <li>Develops curriculum for ML fundamentals</li>
-                    </ul>
-                </div>
-
-                <div class="exp-item">
-                    <div class="exp-top">
-                        <span class="exp-org">Microsoft Learn Student Chapter</span>
-                        <span class="exp-role">Executive Committee</span>
-                    </div>
-                    <ul class="exp-list">
-                        <li>Led workshops on Microsoft technologies and cloud tools</li>
-                        <li>Organized sessions on cloud computing and DevOps</li>
-                        <li>Promoted Azure, GitHub, and modern dev workflows</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section class="section" id="contact">
-            <div class="section-inner">
-                <div class="section-header">
-                    <span class="sh-arrow">▸</span>
-                    <span class="sh-index">07</span>
-                    <span class="sh-title">CONTACT</span>
-                    <div class="sh-line"></div>
-                </div>
-                <div class="about-text">
-                    <p>
-                        Open to research internships in ML/AI and robotics, collaborative research projects,
-                        open-source contributions, and technical mentorship.
-                    </p>
-                </div>
-                <div class="seeking-section">
-                    <span class="seeking-label">Seeking:</span>
-                    <ul class="research-list">
-                        <li>Research internships in ML/AI</li>
-                        <li>Collaborative research in healthcare AI</li>
-                        <li>Open-source contributions in ML frameworks</li>
-                        <li>Technical mentorship opportunities</li>
-                    </ul>
-                </div>
-                <div class="contact-cta">
-                    <a href="mailto:swadhwa.be24@thapar.edu" class="cta-btn">swadhwa.be24@thapar.edu →</a>
-                    <a href="https://www.linkedin.com/in/sanjam-wadhwa-853985334/" target="_blank" rel="noopener" class="cta-btn">LinkedIn →</a>
-                    <a href="https://github.com/idklol22" target="_blank" rel="noopener" class="cta-btn">GitHub →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="site-footer">
-            <div class="section-inner">
-                <div class="footer-line"></div>
-                <div class="footer-content">
-                    <span>© 2026 Sanjam Wadhwa</span>
-                </div>
-            </div>
-        </footer>
-
-    </main>
-
-    <!-- ========== SCRAPER MODAL ========== -->
-    <div class="scraper-overlay" id="scraper-overlay">
-        <div class="scraper-modal pixel-card">
-            <div class="scraper-header">
-                <span class="scraper-title">&lt;/&gt; Plain Text — for LLMs & Scrapers</span>
-                <div class="scraper-actions">
-                    <button class="scraper-copy-btn" id="scraper-copy">
-                        <i class="fas fa-copy"></i> Copy
+                <!-- Window title bar -->
+                <div class="win-bar">
+                    <span class="win-dots">
+                        <span class="dot dot-r"></span>
+                        <span class="dot dot-y"></span>
+                        <span class="dot dot-g"></span>
+                    </span>
+                    <span class="win-title">identity.sh</span>
+                    <button class="mobile-toggle" id="sidebar-toggle" aria-label="Toggle sidebar details">
+                        <span class="toggle-icon" id="toggle-icon">▼</span>
                     </button>
+                </div>
+
+                <!-- Mobile compact header: avatar + name side by side -->
+                <div class="sidebar-hero">
+                    <div class="avatar-frame" id="avatar-frame">
+                        <img src="avatar.png" alt="Sanjam Wadhwa" class="avatar-img">
+                    </div>
+                    <div class="hero-text">
+                        <h1 class="name glitch" data-text="Sanjam Wadhwa">Sanjam Wadhwa</h1>
+                        <p class="subtitle"><span id="tagline">Building Intelligent Systems</span><span class="cursor">█</span></p>
+                    </div>
+                </div>
+
+                <!-- Collapsible details (expanded on desktop, toggle on mobile) -->
+                <div class="sidebar-details" id="sidebar-details">
+
+                    <div class="sidebar-divider"></div>
+
+                    <!-- Socials -->
+                    <div class="sidebar-section">
+                        <span class="sidebar-label">// links</span>
+                        <div class="social-links">
+                            <a href="https://github.com/idklol22" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                                </svg>
+                                <span class="social-label">github</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/sanjam-wadhwa-853985334/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                                <span class="social-label">linkedin</span>
+                            </a>
+                            <a href="https://www.kaggle.com/sanjamw" target="_blank" rel="noopener" title="Kaggle" aria-label="Kaggle">
+                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.334z"/>
+                                </svg>
+                                <span class="social-label">kaggle</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-divider"></div>
+
+                    <!-- Contact -->
+                    <div class="sidebar-section">
+                        <span class="sidebar-label">// contact</span>
+                        <a href="mailto:swadhwa.be24@thapar.edu" class="email-link">swadhwa.be24@thapar.edu</a>
+                        <p class="contact-note">Open to research internships,<br>collaborative projects &amp; mentorship.</p>
+                    </div>
+
+                    <!-- Bottom actions -->
+                    <div class="sidebar-bottom">
+                        <div class="sidebar-divider"></div>
+                        <div class="sidebar-actions">
+                            <button class="action-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark">
+                                <span id="mode-icon">☽</span> <span class="action-label">theme</span>
+                            </button>
+                            <button class="action-btn" id="scraper-btn" aria-label="LLM mode" title="Plain text for LLMs">
+                                &lt;/&gt; <span class="action-label">llm</span>
+                            </button>
+                        </div>
+                        <div class="footer-text">© 2026 Sanjam Wadhwa</div>
+                    </div>
+
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- CONTENT PANEL                           -->
+        <!-- ═══════════════════════════════════════ -->
+        <main class="content-panel">
+
+            <!-- Window title bar -->
+            <div class="win-bar content-bar">
+                <span class="win-dots">
+                    <span class="dot dot-r"></span>
+                    <span class="dot dot-y"></span>
+                    <span class="dot dot-g"></span>
+                </span>
+                <span class="win-title">~/portfolio</span>
+            </div>
+
+            <!-- Tab bar -->
+            <nav class="tab-bar" id="tab-bar">
+                <button class="tab active" data-tab="about">[about]</button>
+                <button class="tab" data-tab="publications">[publications]</button>
+                <button class="tab" data-tab="projects">[projects]</button>
+                <button class="tab" data-tab="notes">[notes]</button>
+            </nav>
+
+            <!-- Tab content area -->
+            <div class="tab-content" id="tab-content">
+
+                <!-- ABOUT -->
+                <div class="tab-pane active" id="pane-about">
+                    <div class="pane-scroll">
+                        <h2 class="section-title">about</h2>
+                        <p>I'm an undergraduate studying Computer Science at Thapar Institute of Engineering & Technology. I'm curious about how complex systems work and enjoy learning by exploring challenging ideas. I value asking good questions, building strong fundamentals, and developing deeper understanding through coursework, reading, and projects.</p>
+                        <p>I'm interested in growing as a researcher and learner, motivated by environments that encourage thoughtful exploration and collaboration.</p>
+
+                        <div class="sub-divider"></div>
+
+                        <h3 class="sub-title">research interests</h3>
+                        <p>My research focuses on machine learning and reinforcement learning, with emphasis on interpretability and reliability. I'm particularly interested in understanding model behavior, improving robustness, and designing learning systems that generalize well.</p>
+                        <div class="tag-list">
+                            <span>Machine Learning</span>
+                            <span>Reinforcement Learning</span>
+                            <span>Model Interpretability</span>
+                            <span>Deep Learning</span>
+                            <span>NLP</span>
+                        </div>
+
+                        <div class="sub-divider"></div>
+
+                        <h3 class="sub-title">recent news</h3>
+                        <div class="news-scroll-bar">
+                            <div class="news-item">
+                                <span class="date">New</span>
+                                <span class="news-text">Accepted in <strong>IIIT Hyderabad</strong> for Undergrad lateral entry</span>
+                            </div>
+                            <div class="news-item">
+                                <span class="date">Jun 2026</span>
+                                <span class="news-text">Paper accepted in <strong>INTERSPEECH 2026</strong></span>
+                            </div>
+                            <div class="news-item">
+                                <span class="date">May 2026</span>
+                                <span class="news-text">Paper accepted in <strong>COLORAI @ ICML 2026</strong></span>
+                            </div>
+                            <div class="news-item">
+                                <span class="date">Sep 2025</span>
+                                <span class="news-text">Paper accepted in <strong>ComputingCon 2025</strong></span>
+                            </div>
+                            <div class="news-item">
+                                <span class="date">Sem 1 2024</span>
+                                <span class="news-text"><strong>Merit Scholarship</strong> — Half tuition fee for academic excellence</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- PUBLICATIONS -->
+                <div class="tab-pane" id="pane-publications">
+                    <div class="pane-scroll">
+                        <h2 class="section-title">publications</h2>
+
+                        <div class="pub">
+                            <div class="pub-meta"><span class="badge">Accepted</span> INTERSPEECH 2026</div>
+                            <div class="pub-name">"From Signals to Patterns: Non-Invasive Tuberculosis Detection from Cough Audio using Bandit Weighted Hyperbolic Prototypes"</div>
+                            <div class="pub-info">MM Akhtar, Girish, <em>Sanjam Wadhwa</em>, Muskaan Singh</div>
+                            <div class="pub-info muted">Mentors: Muskaan Singh, MM Akhtar, Girish</div>
+                        </div>
+
+                        <div class="pub">
+                            <div class="pub-meta"><span class="badge">Accepted</span> COLORAI @ ICML 2026</div>
+                            <div class="pub-name">"Less is More in Kolmogorov-Arnold Networks: The Shared-Atom Architecture"</div>
+                            <div class="pub-info"><em>Sanjam Wadhwa</em>, Hrideya Sharma, Shashank Singh, Saurabh Sharma</div>
+                            <div class="pub-info muted">Mentors: Shashank Singh, Saurabh Sharma</div>
+                        </div>
+
+                        <div class="pub">
+                            <div class="pub-meta"><span class="badge">Accepted</span> ComputingCon 2025</div>
+                            <div class="pub-name">"Early-Stage Diabetes Prediction using Stacked Learning"</div>
+                            <div class="pub-info">Mentor: Prof. Rinkle Rani · CSE Dept · TIET</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECTS -->
+                <div class="tab-pane" id="pane-projects">
+                    <div class="pane-scroll">
+                        <h2 class="section-title">projects</h2>
+
+                        <div class="proj">
+                            <div class="proj-head">
+                                <span class="proj-name">CurveLABS</span>
+                                <span class="proj-links"><a href="https://idklol22.github.io/CurveLABS--MLP-Visualizer-for-hand-drawn-curve/" target="_blank" rel="noopener">demo</a><a href="https://github.com/idklol22/CurveLABS--MLP-Visualizer-for-hand-drawn-curve" target="_blank" rel="noopener">source</a></span>
+                            </div>
+                            <p class="proj-desc">Browser-based tool for drawing curves and training MLPs in real-time. Visualize neural network behavior as it learns to approximate hand-drawn functions.</p>
+                            <div class="tag-list small"><span>TensorFlow.js</span><span>Neural Networks</span><span>Canvas</span></div>
+                        </div>
+
+                        <div class="proj">
+                            <div class="proj-head">
+                                <span class="proj-name">Chaos Particle Simulator</span>
+                                <span class="proj-links"><a href="https://idklol22.github.io/Chaos-Particle-Simulator/" target="_blank" rel="noopener">demo</a><a href="https://github.com/idklol22/Chaos-Particle-Simulator" target="_blank" rel="noopener">source</a></span>
+                            </div>
+                            <p class="proj-desc">Interactive 3D visualization of chaotic systems and strange attractors. Real-time particle simulation featuring Lorenz attractors.</p>
+                            <div class="tag-list small"><span>Three.js</span><span>Chaos Theory</span><span>WebGL</span></div>
+                        </div>
+
+                        <div class="proj">
+                            <div class="proj-head">
+                                <span class="proj-name">Library Management System</span>
+                                <span class="proj-links"><a href="https://github.com/idklol22" target="_blank" rel="noopener">source</a></span>
+                            </div>
+                            <p class="proj-desc">Feature-rich console application implementing OOP principles with role-based operations, modular design, and authentication.</p>
+                            <div class="tag-list small"><span>C++</span><span>Design Patterns</span><span>OOP</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NOTES -->
+                <div class="tab-pane" id="pane-notes">
+                    <div class="pane-scroll">
+                        <h2 class="section-title">notes</h2>
+                        <div class="notes-placeholder">
+                            <span class="notes-icon">⌘</span>
+                            <p class="notes-msg">more is coming!</p>
+                            <p class="notes-sub">stay tuned for research notes, walkthroughs, and deep dives.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+    <!-- SCRAPER MODAL -->
+    <div class="scraper-overlay" id="scraper-overlay">
+        <div class="scraper-modal">
+            <div class="scraper-header">
+                <span>&lt;/&gt; Plain Text</span>
+                <div class="scraper-actions">
+                    <button class="scraper-copy-btn" id="scraper-copy">Copy</button>
                     <button class="scraper-close-btn" id="scraper-close">✕</button>
                 </div>
             </div>
