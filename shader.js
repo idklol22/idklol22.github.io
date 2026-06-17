@@ -3,8 +3,16 @@ class QuantizedNoiseGrid {
         this.canvas = document.getElementById('shader-bg');
         if (!this.canvas) return;
 
-        this.gl = this.canvas.getContext('webgl2', { alpha: true, antialias: false })
-              || this.canvas.getContext('webgl',  { alpha: true, antialias: false });
+        this.gl = this.canvas.getContext('webgl2', {
+            alpha: true,
+            antialias: false,
+            powerPreference: 'low-power',
+            failIfMajorPerformanceCaveat: false
+        }) || this.canvas.getContext('webgl', {
+            alpha: true,
+            antialias: false,
+            powerPreference: 'low-power'
+        });
 
         if (!this.gl) {
             console.warn('WebGL not supported');
@@ -24,6 +32,9 @@ class QuantizedNoiseGrid {
             window.innerWidth <= 768 ||
             /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
+        // Throttle: target ~24fps (42ms) on mobile, ~30fps (33ms) on desktop
+        this.frameBudget = this.isMobile ? 42 : 33;
+
         this.init();
     }
 
@@ -32,7 +43,7 @@ class QuantizedNoiseGrid {
         this.createGeometry();
         this.bindEvents();
         this.checkTheme();
-        this.resize();       // after shaders so we can push uniforms like u_cellPx
+        this.resize();
         this.animate();
     }
 
@@ -41,36 +52,35 @@ class QuantizedNoiseGrid {
         const cssW = vv ? vv.width : window.innerWidth;
         const cssH = vv ? vv.height : window.innerHeight;
 
+        // Render at significantly reduced resolution — the canvas is at 10% opacity
+        // so pixel-perfect rendering is totally wasted. Half-res or less is plenty.
         const dprRaw = window.devicePixelRatio || 1;
-        const dpr = this.isMobile ? Math.min(dprRaw, 1.25) : Math.min(dprRaw, 2.0);
+        const dpr = this.isMobile
+            ? Math.min(dprRaw, 0.75)   // mobile: 0.75x
+            : Math.min(dprRaw, 1.0);   // desktop: 1x max (was 2x)
 
         const w = Math.max(1, Math.round(cssW * dpr));
         const h = Math.max(1, Math.round(cssH * dpr));
 
-        // Only touch the drawingbuffer if needed
         if (this.canvas.width !== w || this.canvas.height !== h) {
             this.canvas.width = w;
             this.canvas.height = h;
             this.gl.viewport(0, 0, w, h);
         }
 
-        // Keep CSS size in CSS pixels
         this.canvas.style.width = cssW + 'px';
         this.canvas.style.height = cssH + 'px';
 
-        // Push uniforms that depend on size
         if (this.uniforms?.resolution) {
             this.gl.useProgram(this.program);
             this.gl.uniform2f(this.uniforms.resolution, this.canvas.width, this.canvas.height);
         }
 
-        // Mobile declutter: larger cell pixel size => fewer cells => less cramped
         if (this.uniforms?.cellPx) {
-            const aspect = w / h; // >1 landscape, <1 portrait
-            const cellPx =
-                this.isMobile
-                    ? (aspect < 0.85 ? 24.0 : 20.0) // portrait vs landscape phone
-                    : 14.0;                          // desktop density
+            const aspect = w / h;
+            const cellPx = this.isMobile
+                ? (aspect < 0.85 ? 24.0 : 20.0)
+                : 14.0;
             this.gl.useProgram(this.program);
             this.gl.uniform1f(this.uniforms.cellPx, cellPx);
         }
@@ -86,15 +96,18 @@ class QuantizedNoiseGrid {
             }
         `;
 
+        // Simplified fragment shader:
+        //  - mediump instead of highp (faster on mobile GPUs)
+        //  - fbm reduced from 4 octaves to 3
+        //  - removed second radial mask (invisible at 10% canvas opacity)
+        //  - grain uses simpler hash
         const fragmentShaderSource = `
-            precision highp float;
+            precision mediump float;
 
             uniform float u_time;
             uniform vec2 u_resolution;
             uniform vec2 u_mouse;
             uniform float u_isDark;
-
-            // New: pixel-based cell sizing
             uniform float u_cellPx;
 
             varying vec2 v_uv;
@@ -103,10 +116,6 @@ class QuantizedNoiseGrid {
                 p = fract(p * vec2(234.34, 435.345));
                 p += dot(p, p + 34.23);
                 return fract(p.x * p.y);
-            }
-
-            float hash2D(vec2 p, float t) {
-                return fract(sin(dot(p + t, vec2(12.9898, 78.233))) * 43758.5453);
             }
 
             vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
@@ -137,6 +146,7 @@ class QuantizedNoiseGrid {
                 return 130.0 * dot(m, g);
             }
 
+            // 3-octave fbm (was 4) — plenty of detail for a 10%-opacity background
             float fbm(vec2 p, float t) {
                 float value = 0.0;
                 float amplitude = 0.5;
@@ -149,79 +159,50 @@ class QuantizedNoiseGrid {
                 amplitude *= 0.5; frequency *= 2.0;
 
                 value += amplitude * snoise(p * frequency + vec2(t * 0.2, -t * 0.18));
-                amplitude *= 0.5; frequency *= 2.0;
-
-                value += amplitude * snoise(p * frequency + vec2(-t * 0.25, -t * 0.22));
                 return value;
             }
 
             void main() {
                 vec2 uv = v_uv;
-
                 float aspect = u_resolution.x / u_resolution.y;
                 vec2 scaledUv = vec2(uv.x * aspect, uv.y);
 
-                // ============================================
-                // Grid Setup - pixel-based density (fix)
-                // ============================================
+                // Grid
                 vec2 cells = max(vec2(8.0), floor(u_resolution / u_cellPx));
                 vec2 gridPos = floor(uv * cells);
                 vec2 cellUv = fract(uv * cells);
                 vec2 cellCenter = (gridPos + 0.5) / cells;
 
-                // ============================================
-                // Wave Calculation
-                // ============================================
+                // Waves
                 float t = u_time;
                 float wave1 = fbm(cellCenter * 3.0, t * 0.8);
                 float wave2 = snoise(cellCenter * 5.0 + vec2(t * 0.15, -t * 0.1)) * 0.5;
-                float wave3 = snoise(cellCenter * 8.0 + vec2(-t * 0.3, t * 0.25)) * 0.3;
 
-                float waveIntensity = (wave1 + wave2 + wave3) * 0.5 + 0.5;
+                float waveIntensity = (wave1 + wave2) * 0.5 + 0.5;
                 waveIntensity = clamp(waveIntensity, 0.0, 1.0);
 
-                // ============================================
-                // Quantization
-                // ============================================
-                float levels = 5.0;
-                float quantizedWave = floor(waveIntensity * levels) / levels;
+                // Quantize
+                float quantizedWave = floor(waveIntensity * 5.0) / 5.0;
 
-                // ============================================
-                // Animated Grain per-cell
-                // ============================================
-                float grainSpeed = 8.0;
-                float grain = hash2D(gridPos, floor(t * grainSpeed));
-                float grainIntensity = grain * 0.2 * quantizedWave;
+                // Grain — simplified
+                float grain = hash(gridPos + floor(t * 8.0)) * 0.2 * quantizedWave;
 
-                // ============================================
-                // Radial Mask
-                // ============================================
-                vec2 maskCenter1 = vec2(0.75 * aspect, 0.5);
-                float dist1 = length(scaledUv - maskCenter1);
-
+                // Single radial mask
+                vec2 maskCenter = vec2(0.75 * aspect, 0.5);
+                float dist = length(scaledUv - maskCenter);
                 float maskWobble = snoise(vec2(atan(scaledUv.y - 0.5, scaledUv.x * aspect - 0.75) * 3.0, t * 0.1)) * 0.15;
-                float mask1 = smoothstep(0.9 + maskWobble, 0.2, dist1);
-
-                vec2 maskCenter2 = vec2(0.2 * aspect, 0.3);
-                float dist2 = length(scaledUv - maskCenter2);
-                float mask2 = smoothstep(0.5, 0.1, dist2) * 0.4;
-
-                float mask = max(mask1, mask2);
+                float mask = smoothstep(0.9 + maskWobble, 0.2, dist);
                 mask = clamp(mask, 0.0, 1.0);
 
-                // ============================================
                 // Cell activation
-                // ============================================
-                float cellBrightness = quantizedWave * mask;
-                cellBrightness += grainIntensity * mask;
+                float cellBrightness = quantizedWave * mask + grain * mask;
 
+                // Border
                 float borderWidth = 0.08;
-                float border = 1.0;
                 if (cellUv.x < borderWidth || cellUv.x > 1.0 - borderWidth ||
                     cellUv.y < borderWidth || cellUv.y > 1.0 - borderWidth) {
-                    border = 0.7;
+                    cellBrightness *= 0.7;
                 }
-                cellBrightness *= border;
 
                 cellBrightness = clamp(cellBrightness, 0.0, 1.0);
                 cellBrightness = smoothstep(0.1, 0.3, cellBrightness) * cellBrightness;
@@ -293,17 +274,22 @@ class QuantizedNoiseGrid {
             resizeTimeout = setTimeout(() => {
                 this.isMobile = window.innerWidth <= 768;
                 this.resize();
-            }, 50);
+            }, 100);  // was 50ms, 100ms is fine for resize
         };
 
         window.addEventListener('resize', scheduleResize, { passive: true });
         window.addEventListener('orientationchange', scheduleResize, { passive: true });
         window.visualViewport?.addEventListener('resize', scheduleResize, { passive: true });
 
+        // Throttle mousemove to ~30fps updates
+        let lastMouse = 0;
         window.addEventListener('mousemove', (e) => {
+            const now = performance.now();
+            if (now - lastMouse < 33) return;
+            lastMouse = now;
             this.targetMouseX = e.clientX / window.innerWidth;
             this.targetMouseY = 1.0 - (e.clientY / window.innerHeight);
-        });
+        }, { passive: true });
 
         window.addEventListener('touchmove', (e) => {
             if (e.touches.length > 0) {
@@ -336,7 +322,12 @@ class QuantizedNoiseGrid {
         requestAnimationFrame(() => this.animate());
 
         const now = performance.now();
-        const delta = (now - this.lastFrame) / 1000;
+        const elapsed = now - this.lastFrame;
+
+        // Frame-skip: only render when enough time has passed
+        if (elapsed < this.frameBudget) return;
+
+        const delta = elapsed / 1000;
         this.lastFrame = now;
 
         this.time += delta;
