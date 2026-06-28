@@ -37,7 +37,7 @@ class ThemeManager {
 class TaglineTyping {
     constructor() {
         this.el = document.getElementById('tagline');
-        this.text = 'Building Intelligent Systems';
+        this.text = 'Building Intelligence';
         if (this.el) this.init();
     }
 

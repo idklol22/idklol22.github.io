@@ -177,6 +177,16 @@ body::before {
     background: var(--hover-glow);
 }
 
+/* Label under mobile action buttons — hidden on desktop */
+.mobile-action-label {
+    display: none;
+}
+
+/* Mobile inline social links — hidden on desktop */
+.mobile-social-inline {
+    display: none;
+}
+
 .win-dots {
     display: flex;
     gap: 5px;
@@ -1168,9 +1178,80 @@ body::before {
         align-items: center;
     }
 
-    /* Show mobile action icons in win-bar */
+    /* Show mobile action icons in win-bar — prominent pill style with labels */
     .mobile-action-btn {
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1px;
+        width: auto;
+        height: auto;
+        padding: 4px 10px 3px;
+        font-size: 0.75rem;
+        border-radius: 6px;
+        background: var(--hover-glow);
+        border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--border));
+        color: var(--text-secondary);
+    }
+
+    .mobile-action-btn:hover,
+    .mobile-action-btn:active {
+        background: color-mix(in srgb, var(--accent) 12%, transparent);
+        border-color: var(--accent);
+        color: var(--accent);
+    }
+
+    .mobile-action-label {
+        display: block;
+        font-family: var(--font-pixel);
+        font-size: 0.6rem;
+        letter-spacing: 0.06em;
+        line-height: 1;
+        color: var(--text-muted);
+        text-transform: lowercase;
+    }
+
+    /* Mobile inline social links — visible row below name */
+    .mobile-social-inline {
+        display: flex;
+        gap: 6px;
+        padding: 6px 16px 10px;
+    }
+
+    .mobile-social-inline a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        padding: 7px 12px;
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        color: var(--text-muted);
+        font-size: 0.72rem;
+        text-decoration: none;
+        transition: color 0.15s, border-color 0.15s, background 0.15s, transform 0.15s;
+        flex: 1;
+    }
+
+    .mobile-social-inline a:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+        background: var(--hover-glow);
+        transform: translateY(-1px);
+    }
+
+    .mobile-social-inline .social-icon {
+        width: 17px;
+        height: 17px;
+        flex-shrink: 0;
+    }
+
+    .mobile-social-name {
+        font-family: var(--font-mono);
+        font-size: 0.58rem;
+        letter-spacing: 0.04em;
+        text-transform: lowercase;
     }
 
     /* Hide the desktop sidebar-bottom on mobile (buttons are in win-bar now) */
@@ -1213,6 +1294,9 @@ body::before {
         font-size: 1.6rem;
         padding: 0;
         text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: clip;
     }
 
     .subtitle {
@@ -1435,6 +1519,36 @@ body::before {
 
     .social-label {
         font-size: 0.5rem;
+    }
+
+    /* Mobile inline social links — tighter on small phones */
+    .mobile-social-inline {
+        padding: 4px 12px 8px;
+        gap: 4px;
+    }
+
+    .mobile-social-inline a {
+        padding: 4px 7px;
+        gap: 4px;
+    }
+
+    .mobile-social-inline .social-icon {
+        width: 11px;
+        height: 11px;
+    }
+
+    .mobile-social-name {
+        font-size: 0.48rem;
+    }
+
+    /* Compact action buttons on small phones */
+    .mobile-action-btn {
+        padding: 3px 7px 2px;
+        font-size: 0.68rem;
+    }
+
+    .mobile-action-label {
+        font-size: 0.52rem;
     }
 
     .name {
